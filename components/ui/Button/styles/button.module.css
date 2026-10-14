@@ -1,0 +1,137 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-family: var(--font-open-sans), sans-serif;
+  font-weight: 600;
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 0.35s ease,
+    background 0.35s ease,
+    color 0.35s ease,
+    gap 0.4s ease,
+    opacity 0.25s ease;
+}
+
+.button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.outline {
+  border: 1px solid var(--color-gold-border);
+  background: var(--color-surface-dark);
+  backdrop-filter: blur(6px);
+  color: var(--color-heading-primary);
+}
+
+.outline:hover,
+.active {
+  border-color: var(--color-gold-border-active);
+}
+
+.solid {
+  border: none;
+  background: var(--color-cta);
+  color: var(--color-heading-primary);
+}
+
+.solid:hover {
+  background: var(--color-cta-hover);
+}
+
+.secondary {
+  border: 1px solid var(--color-button-secondary-bg);
+  background: var(--color-button-secondary-bg);
+  color: var(--color-button-secondary-text);
+}
+
+.secondary:hover {
+  background: color-mix(
+    in srgb,
+    var(--color-button-secondary-bg) 88%,
+    white
+  );
+}
+
+.sm {
+  padding: 12px 16px;
+  min-height: 44px;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.md {
+  padding: 14px 22px;
+  min-height: 48px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.lg {
+  padding: 14px 22px;
+  min-height: 52px;
+  font-size: 14px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  gap: 20px;
+}
+
+.stacked {
+  flex-direction: column;
+  gap: 3px;
+  padding: 10px 26px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.roundedMd {
+  border-radius: 8px;
+}
+
+@media (max-width: 991px) {
+  .sm {
+    padding: 12px 16px;
+    min-height: 44px;
+    font-size: 10px;
+  }
+
+  .md {
+    padding: 12px 18px;
+    min-height: 46px;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .lg {
+    padding: 14px 18px;
+    min-height: 48px;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    gap: 12px;
+  }
+
+  .stacked {
+    padding: 10px 18px;
+    min-height: 46px;
+  }
+}
+
+@media (min-width: 992px) {
+  .md {
+    padding: 14px 22px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+  }
+}

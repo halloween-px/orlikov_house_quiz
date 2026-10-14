@@ -1,0 +1,530 @@
+.page {
+  position: relative;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroImageWrap {
+  position: absolute;
+  inset: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(
+      ellipse 90% 75% at 50% 42%,
+      rgba(6, 6, 6, 0.5) 0%,
+      rgba(8, 8, 8, 0.78) 55%,
+      rgba(10, 10, 10, 0.92) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.35) 0%,
+      rgba(0, 0, 0, 0.55) 45%,
+      rgba(0, 0, 0, 0.88) 100%
+    );
+}
+
+.shell {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  width: min(100%, 1280px);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    max(40px, env(safe-area-inset-top, 0px))
+    max(32px, env(safe-area-inset-right, 0px))
+    max(148px, calc(env(safe-area-inset-bottom, 0px) + 128px))
+    max(32px, env(safe-area-inset-left, 0px));
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  width: 100%;
+}
+
+.eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  border: 1px solid var(--color-gold-border);
+  background: rgba(18, 14, 10, 0.45);
+  color: var(--color-heading-secondary);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand {
+  margin: 0;
+  font-family: var(--font-roboto), sans-serif;
+  font-size: clamp(44px, 7vw, 80px);
+  font-weight: 600;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--color-heading-primary);
+  text-wrap: balance;
+}
+
+.brandAccent {
+  color: var(--color-heading-secondary);
+}
+
+.subtitle {
+  margin: 0;
+  max-width: 42ch;
+  font-size: clamp(15px, 1.7vw, 20px);
+  line-height: 1.5;
+  color: var(--color-subtitle);
+  white-space: pre-line;
+}
+
+.subtitleAccent {
+  color: var(--color-heading-secondary);
+}
+
+.locationLine {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 13px;
+  color: var(--color-subtitle);
+}
+
+.dot {
+  width: 3px;
+  height: 3px;
+  border-radius: 9999px;
+  background: var(--color-heading-secondary);
+  opacity: 0.8;
+}
+
+.heroChips,
+.hotelChips {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 12px 16px;
+  border-radius: 9999px;
+  border: none;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.08),
+      rgba(255, 255, 255, 0.02)
+    ),
+    rgba(12, 10, 8, 0.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.08),
+    0 10px 24px rgba(0, 0, 0, 0.18);
+  backdrop-filter: blur(10px);
+  color: var(--color-heading-primary);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  transition:
+    background 0.35s ease,
+    box-shadow 0.35s ease,
+    transform 0.35s ease;
+}
+
+.chip::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--color-heading-secondary);
+  box-shadow: 0 0 12px
+    color-mix(in srgb, var(--color-heading-secondary) 45%, transparent);
+  flex-shrink: 0;
+}
+
+.chip:hover {
+  transform: translateY(-1px);
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.1),
+      rgba(255, 255, 255, 0.03)
+    ),
+    rgba(16, 13, 10, 0.72);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  width: 100%;
+  max-width: 920px;
+  margin-top: 6px;
+  padding: 4px;
+  border-radius: 18px;
+  border: 1px solid
+    color-mix(in srgb, var(--color-gold-border) 42%, transparent);
+  background:
+    linear-gradient(
+      165deg,
+      rgba(227, 170, 80, 0.1) 0%,
+      rgba(12, 10, 8, 0.35) 45%,
+      rgba(8, 7, 6, 0.55) 100%
+    ),
+    rgba(10, 9, 8, 0.45);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 16px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.fact {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 22px 16px;
+  text-align: center;
+}
+
+.fact:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 18%;
+  right: 0;
+  bottom: 18%;
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    color-mix(in srgb, var(--color-gold-border) 55%, transparent) 50%,
+    transparent 100%
+  );
+}
+
+.factValue {
+  font-family: var(--font-roboto), sans-serif;
+  font-size: clamp(22px, 2.4vw, 30px);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--color-heading-primary);
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.factLabel {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-heading-secondary);
+  opacity: 0.9;
+}
+
+.hotelBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-top: 6px;
+}
+
+.hotelTitle {
+  margin: 0;
+  max-width: 48ch;
+  font-family: var(--font-roboto), sans-serif;
+  font-size: clamp(16px, 1.8vw, 20px);
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--color-heading-primary);
+}
+
+.hotelAccent {
+  color: var(--color-heading-secondary);
+  font-weight: 400;
+}
+
+.hotelChips {
+  max-width: 980px;
+}
+
+.ctaBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: max(28px, calc(env(safe-area-inset-bottom, 0px) + 20px));
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: min(calc(100% - 32px), 520px);
+  margin-inline: auto;
+  pointer-events: none;
+}
+
+.ctaHint {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-subtitle) 88%, transparent);
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+}
+
+.ctaButton {
+  pointer-events: auto;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  width: 100%;
+  min-height: 68px;
+  padding: 18px 36px;
+  border: 1px solid
+    color-mix(in srgb, var(--color-heading-primary) 22%, var(--color-primary));
+  border-radius: 9999px;
+  background:
+    linear-gradient(
+      135deg,
+      #f0c878 0%,
+      var(--color-primary) 42%,
+      #c9923a 100%
+    );
+  color: var(--color-button-secondary-text);
+  font-family: var(--font-open-sans), sans-serif;
+  font-size: clamp(14px, 1.5vw, 16px);
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12) inset,
+    0 18px 40px rgba(0, 0, 0, 0.45),
+    0 0 48px color-mix(in srgb, var(--color-primary) 35%, transparent);
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.28) 48%,
+    transparent 66%
+  );
+  transform: translateX(-120%);
+  transition: transform 0.7s ease;
+  pointer-events: none;
+}
+
+.ctaButton:hover::before {
+  transform: translateX(120%);
+}
+
+.ctaButton:hover {
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.18) inset,
+    0 22px 48px rgba(0, 0, 0, 0.5),
+    0 0 64px color-mix(in srgb, var(--color-primary) 48%, transparent);
+}
+
+.ctaButton:focus-visible {
+  outline: 2px solid var(--color-heading-primary);
+  outline-offset: 3px;
+}
+
+.ctaLabel {
+  position: relative;
+  z-index: 1;
+}
+
+.ctaArrow {
+  position: relative;
+  z-index: 1;
+  font-size: 1.25em;
+  line-height: 1;
+  transition: transform 0.35s ease;
+}
+
+.ctaButton:hover .ctaArrow {
+  transform: translateX(6px);
+}
+
+@media (max-width: 991px) {
+  .shell {
+    align-items: flex-end;
+    padding-bottom: max(136px, calc(env(safe-area-inset-bottom, 0px) + 116px));
+  }
+
+  .content {
+    gap: 16px;
+  }
+
+  .brand {
+    font-size: clamp(36px, 10vw, 52px);
+  }
+
+  .subtitle {
+    font-size: 15px;
+  }
+
+  .facts {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .fact {
+    padding: 16px 10px;
+    gap: 6px;
+  }
+
+  .factValue {
+    font-size: 18px;
+  }
+
+  .factLabel {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+  }
+
+  .ctaButton {
+    min-height: 60px;
+    padding: 16px 28px;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 640px) {
+  .facts {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .fact:nth-child(2n)::after {
+    display: none;
+  }
+
+  .fact:nth-child(-n + 2) {
+    border-bottom: 1px solid
+      color-mix(in srgb, var(--color-gold-border) 28%, transparent);
+  }
+
+  .heroChips {
+    display: none;
+  }
+
+  .chip {
+    padding: 9px 12px;
+    font-size: 11px;
+  }
+
+  .hotelTitle {
+    font-size: 15px;
+  }
+
+  .ctaBar {
+    bottom: max(20px, calc(env(safe-area-inset-bottom, 0px) + 12px));
+    width: min(calc(100% - 24px), 520px);
+    gap: 10px;
+  }
+
+  .ctaHint {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+
+  .ctaButton {
+    min-height: 56px;
+    gap: 14px;
+    padding: 14px 22px;
+  }
+
+  .locationLine {
+    font-size: 12px;
+  }
+}
+
+@media (max-height: 760px) {
+  .content {
+    gap: 14px;
+  }
+
+  .brand {
+    font-size: clamp(36px, 5.5vw, 56px);
+  }
+
+  .fact {
+    padding: 14px 10px;
+  }
+
+  .factValue {
+    font-size: 20px;
+  }
+
+  .hotelBlock {
+    gap: 12px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .ctaButton,
+  .ctaArrow {
+    transition: none;
+  }
+
+  .chip:hover,
+  .ctaButton:hover .ctaArrow {
+    transform: none;
+  }
+
+  .ctaButton::before {
+    display: none;
+  }
+}
